@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jaweee.dao.ProductMapper">
+
+    <resultMap id="productMap" type="com.jaweee.po.Product">
+        <id column="prod_id" property="prodId"/>
+        <result column="vend_id" property="vendId"/>
+        <result column="prod_name" property="prodName"/>
+        <result column="prod_price" property="prodPrice"/>
+        <result column="prod_desc" property="prodDescription"/>
+    </resultMap>
+
+    <select id="listProducts" resultMap="productMap">
+        select * from products;
+    </select>
+
+    <select id="getProduct" parameterType="java.lang.String" resultMap="productMap">
+        select prod_id, vend_id, prod_name, prod_price, prod_desc
+        from products
+        where prod_id = #{id}
+    </select>
+</mapper>
