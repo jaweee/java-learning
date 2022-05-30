@@ -31,4 +31,10 @@ public interface ProductMapper {
      * @date 2022/5/29 08:57
     */
     List<Product> listProducts();
+
+    /**
+     *
+     */
+
+    void insert(Product product);
 }

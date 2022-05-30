@@ -30,4 +30,10 @@ public interface ProductService {
      * @date 2022/5/29 09:24
     */
     public List<Product> listProducts();
+
+
+    /**
+     *
+     */
+    public void saveProduct(Product product);
 }

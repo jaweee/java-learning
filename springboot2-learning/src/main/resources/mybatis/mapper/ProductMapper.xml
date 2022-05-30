@@ -17,6 +17,13 @@
     <select id="getProduct" parameterType="java.lang.String" resultMap="productMap">
         select prod_id, vend_id, prod_name, prod_price, prod_desc
         from products
-        where prod_id = #{id}
+        where prod_id = #{id};
     </select>
+
+    <insert id="insert" parameterType="com.jaweee.po.Product">
+        insert into products(prod_id, vend_id, prod_name, prod_price, prod_desc)
+        values( #{prodId}, #{vendId}, #{prodName}, #{prodPrice}, #{prodDescription});
+    </insert>
+
+
 </mapper>

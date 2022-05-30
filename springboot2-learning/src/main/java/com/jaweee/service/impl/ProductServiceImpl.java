@@ -39,4 +39,16 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> listProducts() {
         return productMapper.listProducts();
     }
+
+
+    /**
+     *
+     * @param product
+     */
+    @Override
+    public void saveProduct(Product product) {
+        productMapper.insert(product);
+    }
+
+
 }

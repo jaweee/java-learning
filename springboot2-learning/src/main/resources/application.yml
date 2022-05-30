@@ -7,8 +7,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: Njw12345.
-    url: jdbc:mysql://localhost:3306/learning_mysql?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    password: 123456
+    url: jdbc:mysql://localhost:3306/mysql_crash_course?useUnicode=true&characterEncoding=UTF-8&useSSL=false
 
 # 配置mybatis
 mybatis:
