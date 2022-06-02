@@ -25,5 +25,8 @@
         values( #{prodId}, #{vendId}, #{prodName}, #{prodPrice}, #{prodDescription});
     </insert>
 
+    <delete id="deleteByProdId" parameterType="java.lang.String">
+        delete from products where prod_id = #{id}
+    </delete>
 
 </mapper>

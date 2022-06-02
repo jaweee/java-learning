@@ -50,5 +50,12 @@ public class ProductServiceImpl implements ProductService {
         productMapper.insert(product);
     }
 
-
+    /**
+     *
+     * @param id
+     */
+    @Override
+    public void removeProductByProdId(String id) {
+        productMapper.deleteByProdId(id);
+    }
 }

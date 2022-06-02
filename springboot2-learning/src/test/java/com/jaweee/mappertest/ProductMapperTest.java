@@ -6,6 +6,7 @@ import com.jaweee.service.ProductService;
 import com.jaweee.service.impl.ProductServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -23,9 +24,11 @@ import java.util.List;
 @SpringBootTest
 public class ProductMapperTest {
 
+    @Autowired
+    ProductService productService;
+
     @Test
     public void testProductMapperInterface(){
-        ProductService productService = new ProductServiceImpl();
 
 //        Product product = productService.getProduct("ANV01");
 //        List<Product> list = productService.listProducts();
@@ -34,13 +37,16 @@ public class ProductMapperTest {
 //            System.out.println(item.toString());
 //        }
 
-        Product insertProduct = new Product();
-        insertProduct.setProdId("lalal");
-        insertProduct.setVendId(Long.valueOf(1001));
-        insertProduct.setProdName("ja");
-        insertProduct.setProdPrice(BigDecimal.valueOf(12.4));
-        insertProduct.setProdDescription("hahah");
-        productService.saveProduct(insertProduct);
+//        Product insertProduct = new Product();
+//        insertProduct.setProdId("ohlaohla");
+//        insertProduct.setVendId(Long.valueOf(1001));
+//        insertProduct.setProdName("ja");
+//        insertProduct.setProdPrice(BigDecimal.valueOf(12.4));
+//        insertProduct.setProdDescription("hahah");
+//        productService.saveProduct(insertProduct);
+
+        productService.removeProductByProdId("lalal");
+        productService.removeProductByProdId("ohlaohla");
     }
 
 }

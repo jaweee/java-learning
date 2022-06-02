@@ -37,4 +37,10 @@ public interface ProductMapper {
      */
 
     void insert(Product product);
+
+    /**
+     *
+     * @param id
+     */
+    void deleteByProdId(String id);
 }

@@ -36,4 +36,6 @@ public interface ProductService {
      *
      */
     public void saveProduct(Product product);
+
+    public void removeProductByProdId(String id);
 }
