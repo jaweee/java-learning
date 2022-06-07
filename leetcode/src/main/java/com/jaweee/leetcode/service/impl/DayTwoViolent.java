@@ -6,7 +6,7 @@ import com.jaweee.leetcode.service.DayTwoService;
 /**
  * @author: me
  * @title: DayTwoViolent
- * @description:
+ * @description: 穷举了所有连续子数组的情况
  * @date: 2022/6/2 15:28
  */
 public class DayTwoViolent implements DayTwoService {

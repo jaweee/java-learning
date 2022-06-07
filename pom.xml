@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>springboot2-learning</module>
+        <module>jcip</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -31,7 +32,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <version>5.1.49</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

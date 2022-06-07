@@ -5,7 +5,7 @@ import com.jaweee.leetcode.service.DayTwoService;
 /**
  * @author: me
  * @title: DayTwoDynamic
- * @description:
+ * @description: 动态规划的方法
  * @date: 2022/6/2 15:40
  */
 public class DayTwoDynamic implements DayTwoService {
