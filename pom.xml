@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>springboot2-learning</module>
-        <module>jcip</module>
+        <module>springboot2</module>
+        <module>tutorials</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
