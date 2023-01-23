@@ -12,10 +12,18 @@ import org.junit.jupiter.api.Test;
 public class StockProfitTest {
 
     @Test
-    public void testMaxProfit() {
+    public void testMaxProfitI() {
         StockProfit sp = new StockProfit();
         int[] a = new int[]{7,1,5,3,6,4};
-        int mp = sp.maxProfit(a);
+        int mp = sp.maxProfitI(a);
+        System.out.println(mp);
+    }
+
+    @Test
+    public void testMaxProfitII() {
+        StockProfit sp = new StockProfit();
+        int[] a = new int[]{1,2,3,4,5};
+        int mp = sp.maxProfitII(a);
         System.out.println(mp);
     }
 }

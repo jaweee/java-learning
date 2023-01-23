@@ -14,7 +14,7 @@ public class StockProfit {
      * @param prices
      * @return
      */
-    public int maxProfit(int[] prices) {
+    public int maxProfitI(int[] prices) {
         int miniprice = Integer.MAX_VALUE, n = prices.length;
         int[] dp = new int[n+1];
         dp[0] = 0;
@@ -25,4 +25,15 @@ public class StockProfit {
         }
         return dp[n];
     }
+
+    public int maxProfitII(int[] prices) {
+        int miniprice = prices[0], n = prices.length, mp = 0;
+        for (int i = 1; i < n; i++) {
+            if (prices[i-1] < prices[i]) {
+                mp = mp + prices[i] - prices[i-1];
+            }
+        }
+        return mp;
+    }
+
 }
