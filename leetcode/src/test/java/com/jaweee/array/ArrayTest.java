@@ -13,6 +13,14 @@ import java.util.List;
  */
 public class ArrayTest {
 
+    public void printArray(int[] a){
+        int n = a.length;
+        for (int i = 0; i < n - 1; i++){
+            System.out.print(a[i] + ", ");
+        }
+        System.out.println(a[n-1] +  "\n");
+    }
+
     @Test
     public void testThreeSum() {
         int[] array = new int[]{ -1,0,1,2,-1,-4};
@@ -22,4 +30,21 @@ public class ArrayTest {
             System.out.println(temp);
         }
     }
+
+    @Test
+    public void testSort(){
+        int[] a = new int[]{1, 0, 8, 3, 2, 6, 4};
+        SortArray sa = new SortArray();
+        sa.bubbleSort(a);
+        printArray(a);
+    }
+
+    @Test
+    public void testMerge() {
+        int[] a = new int[]{1,5,7};
+        int[] b = new int[]{2,3,6};
+        MergeTwo merge2 = new MergeTwo();
+        merge2.merge(a, 3, b, 3);
+    }
+
 }
