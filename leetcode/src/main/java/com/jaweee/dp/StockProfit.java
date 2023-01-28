@@ -36,4 +36,11 @@ public class StockProfit {
         return mp;
     }
 
+    public int maxProfitIIByDp(int[] prices) {
+        int n = prices.length;
+        int[][] dp = new int[n][2];
+        //
+        return dp[n][2];
+    }
+
 }
