@@ -1,9 +1,11 @@
-package com.jaweee.test.redis;
+package com.jaweee.redis;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * @description: TODO
@@ -19,6 +21,11 @@ public class RedisTest {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @Test
+    public void testString() {
+        String s = (String) redisTemplate.opsForValue().get("name");
+        System.out.println(s);
+    }
 
 
 }
