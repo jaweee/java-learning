@@ -1,14 +1,18 @@
 package com.hmdp.controller;
 
 
+import cn.hutool.core.bean.BeanUtil;
 import com.hmdp.dto.LoginFormDTO;
 import com.hmdp.dto.Result;
+import com.hmdp.dto.UserDTO;
 import com.hmdp.entity.User;
 import com.hmdp.entity.UserInfo;
 import com.hmdp.service.IUserInfoService;
 import com.hmdp.service.IUserService;
+import com.hmdp.utils.RedisConstants;
 import com.hmdp.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -26,6 +30,9 @@ import javax.servlet.http.HttpSession;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     @Resource
     private IUserService userService;
@@ -65,9 +72,11 @@ public class UserController {
 
     @GetMapping("/me")
     public Result me(){
-        // TODO 获取当前登录的用户并返回
-        User user = UserHolder.getUser();
-        return Result.ok(user);
+        // 获取当前登录的用户并返回，拦截器放行后，获取redis中的值，此时用户信息不是存储在threadlocal中
+         UserDTO userDTO = UserHolder.getUser();
+        // 从redis数据库中获取用户信息
+        // UserDTO userDTO = BeanUtil.fillBeanWithMap(stringRedisTemplate.opsForHash().entries(RedisConstants.LOGIN_USER_KEY), UserDTO.class, false);
+        return Result.ok(userDTO);
     }
 
     @GetMapping("/info/{id}")
