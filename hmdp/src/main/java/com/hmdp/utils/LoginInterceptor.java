@@ -34,7 +34,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         // 在访问controller之前需要做登录校验
         // HttpSession session = request.getSession();
         // Object user = session.getAttribute("user");
-        //
+
         String token = request.getHeader("authorization");
         if (StrUtil.isBlank(token)) {
             response.setStatus(401);

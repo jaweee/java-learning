@@ -1,6 +1,7 @@
 package com.hmdp.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -72,7 +73,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         String formCode = loginForm.getCode();
         // Object scode = session.getAttribute("code");
         String cacheCode = stringRedisTemplate.opsForValue().get(RedisConstants.LOGIN_CODE_KEY + phone);
-        if (formCode == null || !cacheCode.equals(formCode)){
+        if (formCode == null || cacheCode == null || !cacheCode.equals(formCode)){
             // 3. 不一致返回
             return Result.fail("验证码校验不对");
         }
@@ -87,13 +88,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         // 6. 更新为，这里以随机token为key，存储用户数据，
         String token = UUID.randomUUID().toString(true);
         UserDTO userDTO = BeanUtil.copyProperties(user, UserDTO.class);
-        Map<String, Object> map = BeanUtil.beanToMap(userDTO,false,false);
+        Map<String, Object> map = BeanUtil.beanToMap(userDTO, new HashMap<>(),
+                CopyOptions.create()
+                        .setIgnoreNullValue(true)
+                        .setFieldValueEditor((fieldName, fieldValue) -> fieldValue.toString()));
         // 这里就是为了，替换从threadlocal中获取值，而是在redis获取用户，并且在拦截器中更新存活时间，想session一样
         String tokenKey = RedisConstants.LOGIN_USER_KEY + token;
         stringRedisTemplate.opsForHash().putAll(tokenKey, map);
         stringRedisTemplate.expire(tokenKey, RedisConstants.LOGIN_USER_TTL, TimeUnit.MINUTES);
 
-        return null;
+        return Result.ok(token);
     }
 
     private User createUserWithPhone(String phone) {
