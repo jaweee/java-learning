@@ -22,12 +22,14 @@ public class LongestValidParentheses {
                     // 将dp[i] 根据dp[i-2]更新
                     dp[i] = (i >= 2 ? dp[i - 2] : 0) + 2;
                 }
-                // 情况2，当前字符的前一个字符是')'，我们继续讨论在i-dp[i-1]-1的前一个字符是'('
+                // 情况2，当前字符的前一个字符是')'，
+                // 我们继续讨论，在 i-dp[i-1]-1 的字符是不是'('
                 else if (i - dp[i - 1] > 0 && s.charAt(i - dp[i - 1] - 1) == '(') {
-                    // 判断
+                    // 判断 i - dp[i-1] 是否够长
                     int increment = 0;
                     if (i - dp[i - 1] >= 2) {
-                        increment = i - dp[i - 1];
+                        // 这里要判断 i-dp[i-1]-1 的左边是不是有效的括号，前面不管是0还是有值
+                        increment = dp[i - dp[i - 1] - 1 - 1] + 2;
                     }
                     else {
                         increment = 2;
