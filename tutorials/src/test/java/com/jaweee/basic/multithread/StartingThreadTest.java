@@ -28,9 +28,8 @@ public class StartingThreadTest {
     @Test
     public void testImplementRunnable() {
         ImplementRunnable ir1 = new ImplementRunnable();
-        ir1.run();
-
         ImplementRunnable ir2 = new ImplementRunnable();
+        ir1.run();
         ir2.run();
 
         ImplementRunnable ir3 = new ImplementRunnable();

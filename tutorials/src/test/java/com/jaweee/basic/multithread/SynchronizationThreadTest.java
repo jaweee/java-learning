@@ -15,12 +15,13 @@ import java.util.Scanner;
 public class SynchronizationThreadTest {
 
     @Test
-    public void testSynchronizationThread() {
+    public void testSynchronizationThread() throws InterruptedException {
         SynchronizationThread st = new SynchronizationThread();
 
         st.start();
 
-        new Scanner(System.in).nextLine();
+//        new Scanner(System.in).nextLine();
+        Thread.sleep(1000);
 
         st.shutdown();
 
