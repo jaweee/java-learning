@@ -1,6 +1,7 @@
 package com.jaweee.basic.multithread;
 
 import com.jaweee.basic.multithread.synchronization.SynchronizationThread;
+import com.jaweee.basic.multithread.synchronization.SynchronizedThread;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
@@ -25,5 +26,10 @@ public class SynchronizationThreadTest {
 
         st.shutdown();
 
+    }
+
+    @Test
+    public void testSynchronizedThread() {
+        SynchronizedThread st = new SynchronizedThread();
     }
 }
