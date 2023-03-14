@@ -40,6 +40,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Resource
     StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * 发送验证码，
+     * @param phone
+     * @param session
+     * @return
+     */
     @Override
     public Result sendCode(String phone, HttpSession session) {
         // 1. 校验手机号
@@ -69,7 +75,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if (!RegexUtils.isPhoneInvalid(phone)) {
             return Result.fail("手机号校验不对");
         }
-        // 2. 校验验证码
+        // 2. 校验验证码，从登录表单中获取验证码和redis中缓存的验证码进行校验
         String formCode = loginForm.getCode();
         // Object scode = session.getAttribute("code");
         String cacheCode = stringRedisTemplate.opsForValue().get(RedisConstants.LOGIN_CODE_KEY + phone);
