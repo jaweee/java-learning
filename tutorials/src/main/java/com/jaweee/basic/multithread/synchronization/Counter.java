@@ -9,9 +9,14 @@ package com.jaweee.basic.multithread.synchronization;
  */
 public class Counter {
 
-    public static int unsynCount = 0;
-
     private int count;
+
+    public Counter() {
+    }
+
+    public Counter(int count) {
+        this.count = count;
+    }
 
     public int getCount() {
         return count;

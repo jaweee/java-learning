@@ -10,19 +10,16 @@ package com.jaweee.basic.multithread.synchronization;
 public class SynchronizedThread {
 
     public static void main(String[] args) throws InterruptedException {
-        Counter counter = new Counter();
-        counter.setCount(0);
+        Counter counter = new Counter(0);
 
         Thread addthread = new Thread(() -> {
             for (int i = 0; i < 100000; i++) {
-                // Counter.unsynCount++;
                 counter.addCount();
             }
         });
 
         Thread decthread = new Thread(() -> {
             for (int i = 0; i < 100000; i++) {
-                // Counter.unsynCount--;
                 counter.decCount();
             }
         });

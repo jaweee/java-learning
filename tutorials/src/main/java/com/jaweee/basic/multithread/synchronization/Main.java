@@ -9,7 +9,16 @@ package com.jaweee.basic.multithread.synchronization;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter(0);
 
+        AddThread add = new AddThread(counter);
+        DecThread dec = new DecThread(counter);
+        add.start();
+        dec.start();
+        add.join();
+        dec.join();
+
+        System.out.println(counter.getCount());
     }
 }
